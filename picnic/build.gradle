@@ -25,23 +25,22 @@ dependencies {
 
 apply plugin: 'org.jetbrains.dokka'
 def dokkaDir = "$buildDir/dokka"
-dokka {
-  outputFormat = 'html'
-  outputDirectory = dokkaDir
-}
+// dokkaHtml {
+// 	outputDirectory.set(buildDir.resolve("dokka"))
+// }
 def dokkaJarTaskProvider = tasks.register('dokkaJar', Jar) { task ->
   task.archiveClassifier.set('javadoc')
   task.from(dokkaDir)
   task.dependsOn('dokka')
 }
 
-def javadocJarTaskProvider = tasks.register('javadocJar', org.jetbrains.dokka.gradle.DokkaTask) { task ->
-  task.outputFormat = 'javadoc'
-  task.outputDirectory = "$buildDir/javadoc"
-}
-tasks.named('assemble').configure {
-  it.dependsOn(javadocJarTaskProvider)
-}
+// def javadocJarTaskProvider = tasks.register('javadocJar', org.jetbrains.dokka.gradle.DokkaTask) { task ->
+//   task.outputFormat = 'javadoc'
+//   task.outputDirectory = "$buildDir/javadoc"
+// }
+// tasks.named('assemble').configure {
+//   it.dependsOn(javadocJarTaskProvider)
+// }
 
 def isReleaseBuild = !version.endsWith('-SNAPSHOT')
 

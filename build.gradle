@@ -8,9 +8,9 @@ buildscript {
   ]
 
   dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
     classpath 'org.jlleitschuh.gradle:ktlint-gradle:9.1.0'
-    classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.0'
+    classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.4.30'
     classpath 'ru.vyarus:gradle-animalsniffer-plugin:1.5.0'
   }
 
@@ -30,13 +30,13 @@ subprojects {
     jcenter()
   }
 
-  apply plugin: 'org.jlleitschuh.gradle.ktlint'
-  ktlint {
-    version = '0.38.1'
-    disabledRules = [
-        'filename',
-    ]
-  }
+  // apply plugin: 'org.jlleitschuh.gradle.ktlint'
+  // ktlint {
+  //   version = '0.38.1'
+  //   disabledRules = [
+  //       'filename',
+  //   ]
+  // }
 
   plugins.withId('org.jetbrains.kotlin.jvm') {
     compileKotlin {
